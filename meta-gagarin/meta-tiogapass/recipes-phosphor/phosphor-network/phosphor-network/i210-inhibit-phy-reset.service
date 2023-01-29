@@ -1,0 +1,10 @@
+[Unit]
+Description=Send OEM Intel I210 command to inhibit PHY reset on PCIe reset
+Before=xyz.openbmc_project.Chassis.Control.Power.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ncsi-netlink --package 0 --channel 0 --index 3 --oem-payload 00000157200001
+
+[Install]
+WantedBy=sysinit.target
