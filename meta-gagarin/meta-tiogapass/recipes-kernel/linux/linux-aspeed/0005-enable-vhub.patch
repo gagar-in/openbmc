@@ -1,0 +1,24 @@
+From 54f973d06ef289f065f9d0d6f088f7a76e4dd492 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 26 Jan 2023 10:31:44 +0000
+Subject: [PATCH] enable vhub
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 12f6056df94c..364feab81822 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -609,3 +609,7 @@ &video {
+         status = "okay";
+         memory-region = <&video_engine_memory>;
+ };
++
++&vhub {
++       status = "okay";
++};
+-- 
+2.34.1
+

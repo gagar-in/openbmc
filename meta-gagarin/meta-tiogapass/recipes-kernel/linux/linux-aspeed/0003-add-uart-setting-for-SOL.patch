@@ -1,0 +1,47 @@
+From 272df485a26aa4c49c777686d8d5babc6960c550 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 26 Jan 2023 09:58:03 +0000
+Subject: [PATCH] add uart setting for SOL
+
+---
+ .../boot/dts/aspeed-bmc-facebook-tiogapass.dts  | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 8c6786be83a7..9d437448eb22 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -116,6 +116,18 @@ &lpc_ctrl {
+ 	status = "okay";
+ };
+ 
++
++&uart_routing {
++       status = "okay";
++};
++
++&vuart {
++	// VUART Host Console
++	aspeed,sirq-polarity-sense = <&syscon 0x70 25>;
++	status = "okay";
++};
++
++
+ &uart1 {
+ 	// Host Console
+ 	status = "okay";
+@@ -134,6 +146,11 @@ &uart3 {
+ 	status = "okay";
+ };
+ 
++&uart4 {
++        // Host Out Console
++        status = "okay";
++};
++
+ &uart5 {
+ 	// BMC Console
+ 	status = "okay";
+-- 
+2.34.1
+

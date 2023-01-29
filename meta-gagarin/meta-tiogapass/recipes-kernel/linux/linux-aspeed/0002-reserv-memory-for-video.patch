@@ -1,0 +1,62 @@
+From a37f18f7573e5e5cf8d9a76fb8f6e86d4604a2e7 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Tue, 24 Jan 2023 16:37:49 +0000
+Subject: [PATCH] reserv memory for video
+
+---
+ .../dts/aspeed-bmc-facebook-tiogapass.dts     | 35 +++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index d568792cc4a2..8c6786be83a7 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -44,6 +44,36 @@ memory@80000000 {
+ 		reg = <0x80000000 0x20000000>;
+ 	};
+ 
++        reserved-memory {
++                #address-cells = <1>;
++                #size-cells = <1>;
++                ranges;
++
++                vga_memory: framebuffer@7f000000 {
++                        no-map;
++                        reg = <0x7f000000 0x01000000>;
++                };
++
++                gfx_memory: framebuffer {
++                        size = <0x01000000>;
++                        alignment = <0x01000000>;
++                        compatible = "shared-dma-pool";
++                        reusable;
++                };
++
++                video_engine_memory: jpegbuffer {
++                        size = <0x02000000>;    /* 32M */
++                        alignment = <0x01000000>;
++                        compatible = "shared-dma-pool";
++                        reusable;
++                };
++        };
++
++        vga-shared-memory {
++                compatible = "aspeed,ast2500-vga-sharedmem";
++                reg = <0x9ff00000 0x100000>;
++        };
++
+ 	iio-hwmon {
+ 		compatible = "iio-hwmon";
+ 		io-channels = <&adc 0>, <&adc 1>, <&adc 2>, <&adc 3>,
+@@ -551,3 +581,8 @@ fan@1 {
+ 		aspeed,fan-tach-ch = /bits/ 8 <0x02>;
+ 	};
+ };
++
++&video {
++        status = "okay";
++        memory-region = <&video_engine_memory>;
++};
+-- 
+2.34.1
+

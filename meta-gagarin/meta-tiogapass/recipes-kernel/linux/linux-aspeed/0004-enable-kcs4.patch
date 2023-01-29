@@ -1,0 +1,29 @@
+From 98756a8d81a57017d950958d5b86cde8f1ab8084 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 26 Jan 2023 09:59:58 +0000
+Subject: [PATCH] enable kcs4
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 9d437448eb22..12f6056df94c 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -168,6 +168,12 @@ &kcs3 {
+ 	aspeed,lpc-io-reg = <0xca2>;
+ };
+ 
++&kcs4 {
++	// BMC KCS channel 4
++        status = "okay";
++        kcs_addr = <0xca4>;
++};
++
+ &gpio {
+ 	status = "okay";
+ 	gpio-line-names =
+-- 
+2.34.1
+
