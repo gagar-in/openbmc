@@ -1,0 +1,40 @@
+[
+  {
+    "comments": [
+      "Nan"
+    ],
+    "name": "Fan0",
+    "path": "/system/chassis/motherboard/MB_FAN0_TACH",
+    "fan_missing_error_time": 5,
+    "methods": [
+      {
+        "type": "tach",
+        "sensors": [
+          "MB_FAN0_TACH"
+        ]
+      }
+    ],
+    "rpolicy": {
+      "type": "anyof"
+    }
+  },
+  {
+    "comments": [
+      "Nan"
+    ],
+    "name": "Fan1",
+    "path": "/system/chassis/motherboard/MB_FAN1_TACH",
+    "fan_missing_error_time": 5,
+    "methods": [
+      {
+        "type": "tach",
+        "sensors": [
+          "MB_FAN1_TACH"
+        ]
+      }
+    ],
+    "rpolicy": {
+      "type": "anyof"
+    }
+  }
+]
