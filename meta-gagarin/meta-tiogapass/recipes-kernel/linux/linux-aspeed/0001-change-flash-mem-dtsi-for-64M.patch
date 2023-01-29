@@ -1,0 +1,30 @@
+From 1c89cb406d692043f6877a789700700bdd45ef61 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Tue, 24 Jan 2023 15:44:18 +0000
+Subject: [PATCH] change flash mem dtsi for 64M
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index b6b16356f571..d568792cc4a2 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -57,8 +57,12 @@ &fmc {
+ 	flash@0 {
+ 		status = "okay";
+ 		m25p,fast-read;
+-#include "openbmc-flash-layout.dtsi"
++#include "openbmc-flash-layout-64.dtsi"
+ 	};
++        flash@1 {
++                status = "okay";
++                m25p,fast-read;
++        };
+ };
+ 
+ &spi1 {
+-- 
+2.34.1
+
