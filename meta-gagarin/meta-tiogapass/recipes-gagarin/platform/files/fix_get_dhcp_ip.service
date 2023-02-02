@@ -1,0 +1,13 @@
+[Unit]
+Wants=systemd-networkd.service
+Description=Reload network service to fix gettin ip with dhcp
+
+[Service]
+Restart=no
+RemainAfterExit=true
+Type=oneshot
+ExecStart=/usr/sbin/networkd_reload.sh
+SyslogIdentifier=networkd_reload.sh
+
+[Install]
+WantedBy=multi-user.target
