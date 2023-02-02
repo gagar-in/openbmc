@@ -1,0 +1,31 @@
+From 150f74ffbbe24ec9351586bbc972edc8278b1e2e Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 2 Feb 2023 20:59:52 +0000
+Subject: [PATCH] change http request status code for property errors
+
+---
+ redfish-core/src/error_messages.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/redfish-core/src/error_messages.cpp b/redfish-core/src/error_messages.cpp
+index bee31406..7ce4fa2d 100644
+--- a/redfish-core/src/error_messages.cpp
++++ b/redfish-core/src/error_messages.cpp
+@@ -466,7 +466,7 @@ nlohmann::json propertyValueFormatError(std::string_view arg1,
+ void propertyValueFormatError(crow::Response& res, std::string_view arg1,
+                               std::string_view arg2)
+ {
+-    res.result(boost::beast::http::status::bad_request);
++    res.result(boost::beast::http::status::method_not_allowed);
+     addMessageToJson(res.jsonValue, propertyValueFormatError(arg1, arg2), arg2);
+ }
+ 
+@@ -509,7 +509,7 @@ nlohmann::json propertyValueOutOfRange(std::string_view arg1,
+ void propertyValueOutOfRange(crow::Response& res, std::string_view arg1,
+                              std::string_view arg2)
+ {
+-    res.result(boost::beast::http::status::bad_request);
++    res.result(boost::beast::http::status::method_not_allowed);
+     addMessageToErrorJson(res.jsonValue, propertyValueOutOfRange(arg1, arg2));
+ }
+ 
