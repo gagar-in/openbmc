@@ -1,0 +1,40 @@
+From d9508f68aab6adadcf5a7523f9e67139226efd36 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 2 Feb 2023 20:20:12 +0000
+Subject: [PATCH] change http response status-code for not implemented method
+
+---
+ http/routing.hpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/http/routing.hpp b/http/routing.hpp
+index 5b3ddfe4..1af9d645 100644
+--- a/http/routing.hpp
++++ b/http/routing.hpp
+@@ -1243,7 +1243,7 @@ class Router
+         std::optional<HttpVerb> verb = httpVerbFromBoost(req.method());
+         if (!verb || static_cast<size_t>(*verb) >= perMethods.size())
+         {
+-            res.result(boost::beast::http::status::not_found);
++            res.result(boost::beast::http::status::not_implemented);
+             res.end();
+             return;
+         }
+@@ -1273,7 +1273,7 @@ class Router
+                              << " with " << req.methodString() << "("
+                              << static_cast<uint32_t>(*verb) << ") / "
+                              << rules[ruleIndex]->getMethods();
+-            res.result(boost::beast::http::status::not_found);
++            res.result(boost::beast::http::status::not_implemented);
+             res.end();
+             return;
+         }
+@@ -1312,7 +1312,7 @@ class Router
+         std::optional<HttpVerb> verb = httpVerbFromBoost(req.method());
+         if (!verb || static_cast<size_t>(*verb) >= perMethods.size())
+         {
+-            asyncResp->res.result(boost::beast::http::status::not_found);
++            asyncResp->res.result(boost::beast::http::status::not_implemented);
+             return;
+         }
+ 
