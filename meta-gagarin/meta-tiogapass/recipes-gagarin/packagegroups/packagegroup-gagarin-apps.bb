@@ -52,6 +52,7 @@ RDEPENDS_PN_SYSTEM_EXTRAS = " \
         phosphor-host-postd \
         phosphor-ipmi-kcs \
         phosphor-ipmi-blobs \
+        intel-ipmi-oem \
         tzdata-core \
         "
 
