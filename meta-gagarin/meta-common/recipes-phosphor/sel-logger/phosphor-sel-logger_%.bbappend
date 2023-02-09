@@ -1,0 +1,1 @@
+PACKAGECONFIG:append = " log-threshold log-watchdog send-to-logger log-alarm"
