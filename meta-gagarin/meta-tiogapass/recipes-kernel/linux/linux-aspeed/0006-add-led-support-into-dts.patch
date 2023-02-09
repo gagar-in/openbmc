@@ -1,0 +1,32 @@
+From 880fde3602f78e077c68a4e513675a60b5d68e0e Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 9 Feb 2023 13:49:03 +0000
+Subject: [PATCH] add led support into dts
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 364feab81822..9f94cd06bcae 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -80,6 +80,15 @@ iio-hwmon {
+ 			      <&adc 4>, <&adc 5>, <&adc 6>, <&adc 7>;
+ 	};
+ 
++        leds {
++                compatible = "gpio-leds";
++
++                power {
++                        default-state = "off";
++                        gpios = <&gpio ASPEED_GPIO(AA, 2) GPIO_ACTIVE_LOW>;
++                };
++        };
++
+ };
+ 
+ &fmc {
+-- 
+2.34.1
+

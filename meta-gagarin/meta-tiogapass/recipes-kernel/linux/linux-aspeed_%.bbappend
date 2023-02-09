@@ -7,4 +7,5 @@ SRC_URI += " \
          file://0003-add-uart-setting-for-SOL.patch \
          file://0004-enable-kcs4.patch \
          file://0005-enable-vhub.patch \
+         file://0006-add-led-support-into-dts.patch \
 "

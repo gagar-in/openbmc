@@ -55,6 +55,8 @@ RDEPENDS_PN_SYSTEM_EXTRAS = " \
         smbios-mdr \
         intel-ipmi-oem \
         tzdata-core \
+        phosphor-led-manager \
+        phosphor-led-sysfs \
         "
 
 SUMMARY:${PN}-system = "GagarIn System"
