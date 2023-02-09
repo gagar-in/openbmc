@@ -9,4 +9,5 @@ SRC_URI += " \
          file://0005-enable-vhub.patch \
          file://0006-add-led-support-into-dts.patch \
          file://0007-add-peci0-support-into-dts.patch \
+         file://0008-add-pass-through-support-into-dts.patch \
 "

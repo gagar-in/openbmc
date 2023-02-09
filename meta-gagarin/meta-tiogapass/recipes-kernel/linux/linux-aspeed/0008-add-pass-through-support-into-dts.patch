@@ -1,0 +1,27 @@
+From 28b270cc2242de87761d9bfbe7495f91f5e343fb Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 9 Feb 2023 13:57:52 +0000
+Subject: [PATCH] add pass-through support into dts
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 0a671c0bb2db..d3c9a1c9ac28 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -193,6 +193,10 @@ &kcs4 {
+ 
+ &gpio {
+ 	status = "okay";
++        /* Enable GPIOE0 and GPIOE2 pass-through by default */
++        pinctrl-names = "pass-through";
++        pinctrl-0 = <&pinctrl_gpie0_default
++	               &pinctrl_gpie2_default>;
+ 	gpio-line-names =
+ 	/*A0-A7*/	"BMC_CPLD_FPGA_SEL","","","","","","","",
+ 	/*B0-B7*/	"","BMC_DEBUG_EN","","","","BMC_PPIN","PS_PWROK",
+-- 
+2.34.1
+
