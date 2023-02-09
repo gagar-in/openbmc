@@ -1,0 +1,47 @@
+From ba944c7b8a10da936048b8bef519f4b35ae77d46 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 9 Feb 2023 14:07:11 +0000
+Subject: [PATCH] add i2c-switch44 support into dts
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 26219aff1681..3095275307d6 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -130,7 +130,6 @@ &lpc_ctrl {
+ 	status = "okay";
+ };
+ 
+-
+ &uart_routing {
+        status = "okay";
+ };
+@@ -190,6 +189,10 @@ &kcs4 {
+ 
+ &gpio {
+ 	status = "okay";
++        /* Enable GPIOE0 and GPIOE2 pass-through by default */
++        pinctrl-names = "pass-through";
++        pinctrl-0 = <&pinctrl_gpie0_default
++	               &pinctrl_gpie2_default>;
+ 	gpio-line-names =
+ 	/*A0-A7*/	"BMC_CPLD_FPGA_SEL","","","","","","","",
+ 	/*B0-B7*/	"","BMC_DEBUG_EN","","","","BMC_PPIN","PS_PWROK",
+@@ -483,6 +486,11 @@ i2c-switch@41 {
+ 				reg = <0x41>;
+ 			};
+ 
++                       i2c-switch@44 {
++	    			compatible = "ti,ina230";
++				reg = <0x44>;
++			};
++
+ 			i2c-switch@45 {
+ 				compatible = "ti,ina230";
+ 				reg = <0x45>;
+-- 
+2.34.1
+
