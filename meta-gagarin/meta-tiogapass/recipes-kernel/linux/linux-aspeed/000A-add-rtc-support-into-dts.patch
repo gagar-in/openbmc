@@ -1,0 +1,25 @@
+From 93e783461a6bdf22c91073ee709de93350158ffe Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 9 Feb 2023 14:08:06 +0000
+Subject: [PATCH] add rtc support into dts
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 3095275307d6..59424ee6d6e3 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -635,3 +635,7 @@ &video {
+ &vhub {
+        status = "okay";
+ };
++
++&rtc {
++    status = "okay";
++};
+\ No newline at end of file
+-- 
+2.34.1
+

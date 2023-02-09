@@ -11,4 +11,5 @@ SRC_URI += " \
          file://0007-add-peci0-support-into-dts.patch \
          file://0008-add-pass-through-support-into-dts.patch \
          file://0009-add-i2c-switch44-support-into-dts.patch \
+         file://000A-add-rtc-support-into-dts.patch \
 "
