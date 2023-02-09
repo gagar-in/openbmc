@@ -1532,7 +1532,7 @@
         }
     ],
     "Name": "TiogaPass Baseboard",
-    "Probe": "xyz.openbmc_project.FruDevice({'PRODUCT_PRODUCT_NAME': 'Tioga Pass Single Side'})",
+    "Probe": "xyz.openbmc_project.FruDevice({'PRODUCT_PRODUCT_NAME': 'Tioga Pass Single Side', 'ADDRESS': 84})",
     "Type": "Board",
     "xyz.openbmc_project.Inventory.Decorator.Ipmi": {
         "EntityId": 7
@@ -1542,5 +1542,9 @@
         "Model": "$PRODUCT_PRODUCT_NAME",
         "PartNumber": "$PRODUCT_PART_NUMBER",
         "SerialNumber": "$PRODUCT_SERIAL_NUMBER"
-    }
+    },
+    "xyz.openbmc_project.Inventory.Decorator.AssetTag": {
+	    "AssetTag": "$PRODUCT_ASSET_TAG"
+    },
+    "xyz.openbmc_project.Inventory.Item.System": {}
 }
