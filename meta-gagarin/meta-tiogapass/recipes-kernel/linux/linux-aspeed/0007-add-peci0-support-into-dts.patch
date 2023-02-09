@@ -1,0 +1,28 @@
+From ae1dbc00d47bfbfddb190d7c689167e5b1fa0887 Mon Sep 17 00:00:00 2001
+From: Alisa Gataullina <a.gataullina@gagar-in.com>
+Date: Thu, 9 Feb 2023 13:51:48 +0000
+Subject: [PATCH] add peci0 support into dts
+
+---
+ arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+index 9f94cd06bcae..26219aff1681 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-facebook-tiogapass.dts
+@@ -115,6 +115,11 @@ flash@0 {
+ 	};
+ };
+ 
++&peci0 {
++    status = "okay";
++    gpios = <&gpio ASPEED_GPIO(F, 6) 0>;
++};
++
+ &lpc_snoop {
+ 	status = "okay";
+ 	snoop-ports = <0x80>;
+-- 
+2.34.1
+
